@@ -6,6 +6,10 @@ export const dbConnect = async () => {
     mongoose.set("strictQuery", true);
 
     const con = await mongoose.connect(process.env.MONGO_CLIENT);
+
+    con?.connections
+      ? console.log("db has succesfully connected")
+      : console.log("Unable to connect DB");
     return con;
   } catch (error) {
     console.log(error);
@@ -41,7 +45,7 @@ if (process.env.NODE_ENV === "development") {
     client = new MongoClient(uri, options);
     global._mongoClientPromise = client.connect();
   }
-  clientPromise = gloabal._mongoClientPromise;
+  clientPromise = global._mongoClientPromise;
 } else {
   client = new MongoClient(uri, options);
   clientPromise = client.connect();

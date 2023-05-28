@@ -1,4 +1,4 @@
-import clientPromise from "../config/dbConfig.js";
+import clientPromise from "../../config/dbConfig.js";
 import UserSchema from "./userSchema.js";
 
 export const createNewUser = (obj) => {
